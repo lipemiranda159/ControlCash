@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E46E0F2D-53C5-4A80-BC4F-30C552B73C3B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ControlCash.EF</RootNamespace>
+    <AssemblyName>ControlCash.EF</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControlCashDbContext.cs" />
+    <Compile Include="IBaseContext.cs" />
+    <Compile Include="Mapping\LimitHistoryMapping.cs" />
+    <Compile Include="Mapping\LimitMapping.cs" />
+    <Compile Include="Mapping\MovimentHistoryMapping.cs" />
+    <Compile Include="Mapping\UserMapping.cs" />
+    <Compile Include="Mapping\WalletMapping.cs" />
+    <Compile Include="Migrations\201710271332143_Initialize database.cs" />
+    <Compile Include="Migrations\201710271332143_Initialize database.Designer.cs">
+      <DependentUpon>201710271332143_Initialize database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710271341461_create tables.cs" />
+    <Compile Include="Migrations\201710271341461_create tables.Designer.cs">
+      <DependentUpon>201710271341461_create tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710271417202_create limit history table.cs" />
+    <Compile Include="Migrations\201710271417202_create limit history table.Designer.cs">
+      <DependentUpon>201710271417202_create limit history table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710271418556_create tag description in limit history.cs" />
+    <Compile Include="Migrations\201710271418556_create tag description in limit history.Designer.cs">
+      <DependentUpon>201710271418556_create tag description in limit history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\LimitHistoryRepository.cs" />
+    <Compile Include="Repository\LimitRepository.cs" />
+    <Compile Include="Repository\MovimentHistoryRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\WalletRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ControlCash.Entities\ControlCash.Entities.csproj">
+      <Project>{c914bed2-396a-45d6-8c5b-0e18bcc0a507}</Project>
+      <Name>ControlCash.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ControlCash.UnitOfWork\ControlCash.UnitOfWork.csproj">
+      <Project>{9a7b71eb-8b99-4399-92a2-6638c0ba61a5}</Project>
+      <Name>ControlCash.UnitOfWork</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710271332143_Initialize database.resx">
+      <DependentUpon>201710271332143_Initialize database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710271341461_create tables.resx">
+      <DependentUpon>201710271341461_create tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710271417202_create limit history table.resx">
+      <DependentUpon>201710271417202_create limit history table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710271418556_create tag description in limit history.resx">
+      <DependentUpon>201710271418556_create tag description in limit history.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

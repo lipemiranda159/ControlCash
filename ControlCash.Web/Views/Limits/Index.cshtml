@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ControlCash.Entities.Limit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Novo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Descrição
+        </th>
+        <th>
+            Limite
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TagDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LimitValue)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.LimitId }) |
+            @Html.ActionLink("Detalhe", "Details", new { id=item.LimitId }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.LimitId })
+        </td>
+    </tr>
+}
+
+</table>
